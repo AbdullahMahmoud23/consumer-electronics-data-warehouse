@@ -1,70 +1,70 @@
 # Consumer Electronics Sales Data Warehouse
 
 ![Status](https://img.shields.io/badge/Status-Completed-success)
-![SQL](https://img.shields.io/badge/Language-SQL-blue)
+![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue)
 ![Type](https://img.shields.io/badge/Type-Data%20Warehousing-orange)
 
 ## 📖 Project Overview
-This project involves the design and implementation of a Data Warehouse for a consumer electronics retail company. The company operates both online and offline channels across the United States. The goal of this warehouse is to analyze sales performance, inventory management, and generate key business reports.
+This project involves the end-to-end design and implementation of a Data Warehouse for a consumer electronics retail company. The company sells various electronic products through online and offline channels across major cities in the United States.
 
-This repository contains the SQL scripts for designing the schema, loading data, and performing advanced analytical queries.
+The goal was to transition from raw operational data to a structured warehouse to analyze sales performance and inventory management.
 
-## 🏢 Business Scenario
-As a Data Engineer, I was tasked with creating a solution to answer questions such as:
-* What is the total sales revenue per year per city?
-* How does revenue compare across different product categories and stores?
-* What are the average and maximum sales figures for specific regions?
+## 🎯 Learning Objectives
+Through this project, I demonstrated the following skills:
+* **Dimensional Modeling:** Developed Dimension and Fact tables to organize data for analytical processing.
+* **ETL Simulation:** Employed SQL queries to create schemas and load data.
+* **Performance Tuning:** Created Materialized Views to optimize query performance for frequent reports.
+* **Advanced Aggregation:** Used `GROUPING SETS`, `ROLLUP`, and `CUBE` for multi-level reporting.
+
+## 🏢 Business Scenario & Requirements
+The company required a system capable of generating specific high-level reports. The data warehouse was designed to answer:
+* Total sales revenue per **year** per **city**.
+* Total sales revenue per **month** per **city**.
+* Total sales revenue per **quarter** per **city**.
+* Total sales revenue per **year** per **product category**.
+* Total sales revenue per **product category** per **city**.
+* Total sales revenue per **product category** per **store**.
 
 ## 🏗️ Data Architecture
-The project utilizes a **Star Schema** dimensional model:
+The project utilizes a **Star Schema** dimensional model on **PostgreSQL**:
 
 ### Fact Table
-* **FactSales:** Stores transactional metrics like quantity sold and total price.
-  * *Foreign Keys:* `DateID`, `StoreID`, `ProductKey`, `CustomerSegmentID`
+* **FactSales:** Stores transactional metrics (SalesID, Quantity, TotalAmount).
+  * *Foreign Keys:* `DateKey`, `StoreId`, `ProductKey`, `CustomerKey`
 
 ### Dimension Tables
-* **DimDate:** Attributes for Year, Quarter, Month, Day, and Weekday.
-* **DimProduct:** Attributes for Product Name, Category, Type, and Price.
-* **DimCustomerSegment:** Attributes for Segment Name and Demographics.
+* **DimDate:** Attributes for Year, Quarter, Month, Day, Weekday.
+* **DimProduct:** Attributes for Product Name, Category, Type, Price.
+* **DimCustomerSegment:** Attributes for Segment Name.
 
-## 🛠️ Technologies & Skills
-* **Database:** [Insert Database Name, e.g., PostgreSQL / DB2 / MySQL]
-* **Modeling:** Dimensional Modeling (Star Schema)
-* **SQL Techniques:**
-  * DDL (Create/Alter Tables)
-  * DML (Insert/Load Data)
-  * Aggregations (`GROUP BY`)
-  * Advanced OLAP (`CUBE`, `ROLLUP`, `GROUPING SETS`)
-  * Materialized Views
-
-## 📂 Project Structure & Tasks
-The project is divided into the following implementation tasks:
+## 📂 Project Tasks
+The repository allows you to follow the project lifecycle:
 
 ### Phase 1: Design & DDL
-- [x] **Task 1-3:** Designed dimension tables (`DimDate`, `DimProduct`, `DimCustomerSegment`).
-- [x] **Task 4:** Designed the fact table (`FactSales`).
-- [x] **Task 5-8:** Created the table schemas in the database.
+- [x] **Task 1-4:** Design dimension tables (`DimDate`, `DimProduct`, `DimCustomerSegment`) and fact table (`FactSales`).
+- [x] **Task 5-8:** Create the table schemas in PostgreSQL.
 
-### Phase 2: Data Loading (ETL)
-- [x] **Task 9-11:** Loaded data into dimension tables.
-- [x] **Task 12:** Loaded transactional data into `FactSales`.
+### Phase 2: Data Loading
+- [x] **Task 9-12:** Load synthetic data into Dimension and Fact tables.
 
-### Phase 3: Analysis & Reporting
-- [x] **Task 13:** Created **Grouping Sets** queries for flexible aggregation.
-- [x] **Task 14:** Created **Rollup** queries for hierarchical reporting (Year > Month).
-- [x] **Task 15:** Created **Cube** queries for cross-dimensional analysis (Year vs. City vs. Product).
-- [x] **Task 16:** Implementation of **Materialized Views** for performance optimization.
+### Phase 3: Analytics & Reporting
+- [x] **Task 13:** Create a **Grouping Sets** query.
+- [x] **Task 14:** Create a **Rollup** query.
+- [x] **Task 15:** Create a **Cube** query (Year, City, ProductID, Average Sales).
+- [x] **Task 16:** Create a **Materialized View** (`max_sales`) for performance optimization.
 
-## 🔍 Sample Analytics
-*Below is an example of the Cube Query logic used in Task 15:*
+## ℹ️ Dataset & Tools
+* **Database:** PostgreSQL
+* **Data Source:** This project uses a programmatically created (synthetic) dataset designed specifically for educational simulation of retail scenarios.
 
-```sql
-SELECT 
-    DimDate.Year, 
-    DimStore.City, 
-    DimProduct.ProductID, 
-    AVG(FactSales.SalesAmount) as Average_Sales
-FROM FactSales
-JOIN DimDate ON FactSales.DateKey = DimDate.DateKey
-JOIN DimProduct ON FactSales.ProductKey = DimProduct.ProductKey
-GROUP BY CUBE (DimDate.Year, DimStore.City, DimProduct.ProductID);
+## 🚀 How to Run
+1. Clone the repository.
+2. Ensure you have **PostgreSQL** installed.
+3. Execute the `schema_creation.sql` script to set up tables.
+4. Run the `data_loading.sql` script.
+5. Use `analytical_queries.sql` to generate the reports listed above.
+
+## 👤 Author
+**[Your Name]**
+* [LinkedIn](https://www.linkedin.com/in/abdullah-mahmoud-de1344/)
+* [Upwork](https://www.upwork.com/freelancers/~018af6686d24e5f7bc)
