@@ -65,6 +65,6 @@ The repository allows you to follow the project lifecycle:
 5. Use `analytical_queries.sql` to generate the reports listed above.
 
 ## 👤 Author
-**[Your Name]**
+**[Abdullah Mahmoud (EL-Yamany)](https://github.com/AbdullahMahmoud23)**
 * [LinkedIn](https://www.linkedin.com/in/abdullah-mahmoud-de1344/)
 * [Upwork](https://www.upwork.com/freelancers/~018af6686d24e5f7bc?mp_source=share)
