@@ -57,6 +57,18 @@ The repository allows you to follow the project lifecycle:
 * **Database:** PostgreSQL
 * **Data Source:** This project uses a programmatically created (synthetic) dataset designed specifically for educational simulation of retail scenarios.
 
+## 📂 Data Sources
+The project uses the following datasets for the dimension and fact tables. You can download the raw CSV files using the links below:
+
+* **DimDate:** [Download DimDate.csv](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/-omGFpVSWBIZKFSCxUkBwg/DimDate.csv)
+    * *Contains:* Calendar dates, years, quarters, months, and weekdays for temporal analysis.
+* **DimProduct:** [Download DimProduct.csv](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/Y-76u4An3zb5R6HxxFPabA/DimProduct.csv)
+    * *Contains:* Product ID, product names, and categories.
+* **DimCustomerSegment:** [Download DimCustomerSegment.csv](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/h_dnxb8yzQyVjeb8oYnm8A/DimCustomerSegment.csv)
+    * *Contains:* Customer segmentation data for demographic grouping.
+* **FactSales:** [Download FactSales.csv](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/a8kTjzvpdqzOp46ODatyAA/FactSales.csv)
+    * *Contains:* Transactional sales data linking dimensions to metrics like Quantity Sold and Price.
+
 ## 🚀 How to Run
 1. Clone the repository.
 2. Ensure you have **PostgreSQL** installed.
